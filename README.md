@@ -7,6 +7,8 @@ This script was developed and tested on a Windows 10 machine using a Cygwin term
 
 It assumes that [SITL](https://ardupilot.org/dev/docs/SITL-setup-landingpage.html) has already been downloaded on the machine the script is being run on.
 
+Currently, only copters and rovers are supported.
+
 ## Launch Options
 	-h, --help 				Help message
 	--loc=/path/to/ardupilot 		Set the location of your ArduPilot directory
@@ -16,4 +18,4 @@ It assumes that [SITL](https://ardupilot.org/dev/docs/SITL-setup-landingpage.htm
 Location, IP, and UDP are required data for the program to run, although you can edit the start_sitl_fleet.sh script directly to change the default variables instead of using the flags.
 
 ## Connecting to CloudStation
-After logging in to your CloudStation page, in the box labeled "Connect to Vehicle via ID," enter the UDP port bumber and hit "Connect" for each of the drones you created (they will begin with the UDP port you entered and increment by 1 for each vehicle).
+After logging in to your CloudStation page, in the box labeled "Connect to Vehicle via ID," enter the UDP port number and hit "Connect" for each of the drones you created (they will begin with the UDP port you entered and increment by 1 for each vehicle).
