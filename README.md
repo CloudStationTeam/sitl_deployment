@@ -8,8 +8,8 @@ This script was developed and tested on a Windows 10 machine using a Cygwin term
 It assumes that [SITL](https://ardupilot.org/dev/docs/SITL-setup-landingpage.html) has already been downloaded on the machine the script is being run on.
 
 ## Launch Options
-	-h, --help 					Help message
-	--loc=/path/to/ardupilot 	Set the location of your ArduPilot directory
+	-h, --help 				Help message
+	--loc=/path/to/ardupilot 		Set the location of your ArduPilot directory
 	--ip=x.x.x.x 				Set the CloudStation IP
 	---udp=xxxxx 				Set the first open UDP port
 
