@@ -1,6 +1,6 @@
 # SITL Fleet Auto-deployment
 
-This script automates the launching of SITL vehicles for testing purposes with CloudStation. It launches the desired numbers of each type of SITL vehicle, then appends the appropriate CloudStation UDP port its output list.
+This script automates the process of launching simulated UAVs (using SITL) and connecting them to a running [CloudStation](https://github.com/CloudStationTeam/cloud_station_web) instance. It creates the desired numbers of each type of SITL vehicle, then appends the appropriate CloudStation UDP port its output list.
 
 ## Prerequisites
 This script was developed and tested on a Windows 10 machine using a Cygwin terminal (which is required for SITL to run. Git Bash and other terminals, as far as we know, will not work). It has not been tested with Linux or other environments.
