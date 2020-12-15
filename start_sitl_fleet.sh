@@ -5,7 +5,7 @@ HELP_MSG="
 		-h, --help 			Help message
 		--loc=/path/to/ardupilot 	Set the location of your ArduPilot directory
 		--ip=x.x.x.x 			Set the CloudStation IP
-		---udp=xxxxx 			Set the first open UDP port
+		--udp=xxxxx 			Set the first open UDP port
 	For more details see README"
 
 # Configurables
