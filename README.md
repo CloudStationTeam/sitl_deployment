@@ -10,10 +10,12 @@ It assumes that [SITL](https://ardupilot.org/dev/docs/SITL-setup-landingpage.htm
 Currently, only copters and rovers are supported.
 
 ## Launch Options
+```
 	-h, --help 				Help message
 	--loc=/path/to/ardupilot 		Set the location of your ArduPilot directory
 	--ip=x.x.x.x 				Set the CloudStation IP
 	---udp=xxxxx 				Set the first open UDP port
+```
 
 Location, IP, and UDP are required data for the program to run, although you can edit the start_sitl_fleet.sh script directly to change the default variables instead of using the flags.
 
@@ -24,3 +26,19 @@ After logging in to your CloudStation page, in the box labeled "Connect to Vehic
 Currently, closing one SITL instance will cause all other SITL instances on the same computer to disconnect. This seems to be because of how one of the TCP connections between SITL and MAVProxy is set up.
 
 There also does not seem to be a way to use SITL with CloudStation without MAVProxy at the moment, as local TCP connection between the GCS and SITL is required. If CloudStation is extended to work with TCP as well as UDP, it may be possible to run SITL without MAVProxy on the same machine that CloudStation is hosted on.
+
+## Troubleshooting
+If you get errors that look like,
+```
+start_sitl_fleet.sh: line 2: $'/r': command not found
+```
+the line endings on the script may have been converted to Windows line endings instead of UNIX line endings. To check this, open the file using Vi:
+`vi start_sitl_fleet.sh`
+Then enter the commands:
+```
+:set list
+:e ++ff=unix
+```
+If you see `^M$` at the line endings, it means the line endings are Windows instead of Unix. You can convert them to Unix line endings with:
+`:set ff=unix`
+The `^M`s will disappear, leaving only `$` line endings. After this, you can run the script normally.
