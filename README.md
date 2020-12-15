@@ -40,5 +40,7 @@ Then enter the commands:
 :e ++ff=unix
 ```
 If you see `^M$` at the line endings, it means the line endings are Windows instead of Unix. You can convert them to Unix line endings with:
-`:set ff=unix`
+```
+:set ff=unix
+```
 The `^M`s will disappear, leaving only `$` line endings. After this, you can run the script normally.
