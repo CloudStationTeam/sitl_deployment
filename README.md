@@ -19,3 +19,8 @@ Location, IP, and UDP are required data for the program to run, although you can
 
 ## Connecting to CloudStation
 After logging in to your CloudStation page, in the box labeled "Connect to Vehicle via ID," enter the UDP port number and hit "Connect" for each of the drones you created (they will begin with the UDP port you entered and increment by 1 for each vehicle).
+
+## Notes & Known Issues
+Currently, closing one SITL instance will cause all other SITL instances on the same computer to disconnect. This seems to be because of how one of the TCP connections between SITL and MAVProxy is set up.
+
+There also does not seem to be a way to use SITL with CloudStation without MAVProxy at the moment, as local TCP connection between the GCS and SITL is required. If CloudStation is extended to work with TCP as well as UDP, it may be possible to run SITL without MAVProxy on the same machine that CloudStation is hosted on.
