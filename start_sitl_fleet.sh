@@ -60,6 +60,7 @@ read rovers
 vehicle=0
 
 cd $ARDUPILOT_LOC
+git submodule update --init --recursive
 
 echo "
 Launching $copters copters..."
