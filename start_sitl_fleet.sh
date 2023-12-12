@@ -12,6 +12,7 @@ HELP_MSG="
 ARDUPILOT_LOC="/path/to/ardupilot" # Location of ardupilot, either absolute path or relative to where this script is being executed from
 CLOUDSTATION_IP="54.219.7.188" # IP of CloudStation instance
 UDP_PORT=14550 # First UDP open port on CloudStation (will be incremented for each drone)
+CUSTOM_LOC="" # First Location of the drone 
 
 # Command Line Args
 for arg in "$@"
@@ -38,6 +39,10 @@ do
         ;;
     esac
 done
+
+if [[ $4 ]]; then
+  $CUSTOM_LOC = $4
+fi
 
 echo "Note: It is not recommended to generate multiple instances of a vehicle when running it for the first time, as it will need to be compiled.
 "
@@ -67,7 +72,7 @@ Launching $copters copters..."
 for (( i=0; i<copters; i++ ))
 do
 	echo "Assigning UDP port $UDP_PORT"
-	mintty Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT &
+	mintty Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC &
 	((UDP_PORT++))
 	((vehicle++))
 	sleep 8s
@@ -80,9 +85,11 @@ Launching $rovers rovers..."
 for (( i=0; i<rovers; i++ ))
 do
 	echo "Assigning UDP port $UDP_PORT"
-	mintty Tools/autotest/sim_vehicle.py -v Rover --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT &
+	mintty Tools/autotest/sim_vehicle.py -v Rover --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC &
 	((UDP_PORT++))
 	((vehicle++))
 	sleep 8s
 done
+
+
 
