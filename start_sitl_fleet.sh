@@ -18,6 +18,18 @@ if [[ $4 ]]; then
   CUSTOM_LOC=$4
 fi
 
+
+args="" # Other args 
+counter=1
+for arg in "$@"
+do
+    if [ $counter -ge 5 ]; then
+        args+="$arg "
+        ((counter++))
+    fi
+done
+
+
 # Command Line Args
 for arg in "$@"
 do
@@ -72,7 +84,7 @@ Launching $copters copters..."
 for (( i=0; i<copters; i++ ))
 do
 	echo "Assigning UDP port $UDP_PORT"
-	mintty Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC &
+	mintty Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC $args &
 	((UDP_PORT++))
 	((vehicle++))
 	sleep 8s
@@ -85,7 +97,7 @@ Launching $rovers rovers..."
 for (( i=0; i<rovers; i++ ))
 do
 	echo "Assigning UDP port $UDP_PORT"
-	mintty Tools/autotest/sim_vehicle.py -v Rover --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC &
+	mintty Tools/autotest/sim_vehicle.py -v Rover --no-extra-ports -I $vehicle --out=udp:$CLOUDSTATION_IP:$UDP_PORT $CUSTOM_LOC $args &
 	((UDP_PORT++))
 	((vehicle++))
 	sleep 8s
