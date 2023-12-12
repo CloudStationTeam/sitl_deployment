@@ -14,6 +14,10 @@ CLOUDSTATION_IP="54.219.7.188" # IP of CloudStation instance
 UDP_PORT=14550 # First UDP open port on CloudStation (will be incremented for each drone)
 CUSTOM_LOC="" # First Location of the drone 
 
+if [[ $4 ]]; then
+  CUSTOM_LOC=$4
+fi
+
 # Command Line Args
 for arg in "$@"
 do
@@ -39,10 +43,6 @@ do
         ;;
     esac
 done
-
-if [[ $4 ]]; then
-  CUSTOM_LOC=$4
-fi
 
 echo "Note: It is not recommended to generate multiple instances of a vehicle when running it for the first time, as it will need to be compiled.
 "
