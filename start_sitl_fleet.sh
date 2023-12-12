@@ -41,7 +41,7 @@ do
 done
 
 if [[ $4 ]]; then
-  CUSTOM_LOC=$4
+CUSTOM_LOC=$4
 fi
 
 echo "Note: It is not recommended to generate multiple instances of a vehicle when running it for the first time, as it will need to be compiled.
