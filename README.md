@@ -17,8 +17,7 @@ Currently, only copters and rovers are supported.
 	--loc=/path/to/ardupilot 		Set the location of your ArduPilot directory
 	--ip=x.x.x.x 				Set the CloudStation IP
 	--udp=xxxxx 				Set the first open UDP port
-        --custom_location=<Lat,Lng,Alt,Heading> 
-                Set the first location of the drone 
+        --custom_location=<Lat,Lng,Alt,Heading> Set the first location of the drone (optional) 
 ```
 
 Location, IP, and UDP are required data for the program to run, although you can edit the start_sitl_fleet.sh script directly to change the default variables instead of using the flags.
